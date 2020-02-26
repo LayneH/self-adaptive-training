@@ -1,5 +1,5 @@
 # Self-Adaptive Training
-This is the PyTorch implementation of the paper `Self-Adaptive Training: beyond Empirical Risk Minimization`.
+This is the PyTorch implementation of the paper [Self-Adaptive Training: beyond Empirical Risk Minimization](https://arxiv.org/abs/2002.10319).
 
 ## Requirements
 
@@ -72,3 +72,13 @@ This command evaluate 71-st to 100-th checkpoints in the specified path.
 Self-Adaptive Training mitigates the overfitting issue and consistently improves TRADES.
 </p>
 
+## Reference
+For technical details, please check [the paper](https://arxiv.org/abs/2002.10319).
+```
+@article{huang2020sat,
+        title = {Self-Adaptive Training: beyond Empirical Risk Minimizatio},
+        author = {Lang Huang and Chao Zhang and Hongyang Zhang},
+        journal = {arXiv preprint arXiv:2002.10319},
+        year = {2020}
+}
+```
