@@ -14,7 +14,7 @@ The `main.py` contains training and evaluation functions in standard training se
 #### Runnable scripts
 - Training and evaluation using the default parameters
   
-  We provides our training scripts in directory `scripts/`. For a concrete example, we can use the command as below to train the default model (i.e., ResNet-34) on CIFAR10 dataset with uniform label noise injected (e.g., 40%):
+  We provide our training scripts in directory `scripts/`. For a concrete example, we can use the command as below to train the default model (i.e., ResNet-34) on CIFAR10 dataset with uniform label noise injected (e.g., 40%):
   ```bash
   $ bash scripts/cifar10/run_sat.sh [TRIAL_NAME]
   ```
@@ -42,7 +42,7 @@ The `main.py` contains training and evaluation functions in standard training se
 
 
 ### Adversarial training
-We use state-of-the-art adversarial training algorithm TRADES as our baseline. The `main_adv.py` contains training and evaluation functions in adversarial training setting on CIFAR10 dataset.
+We use state-of-the-art adversarial training algorithm [TRADES](https://github.com/yaodongyu/TRADES) as our baseline. The `main_adv.py` contains training and evaluation functions in adversarial training setting on CIFAR10 dataset.
 
 #### Training scripts
 - Training and evaluation using the default parameters
@@ -57,12 +57,12 @@ We use state-of-the-art adversarial training algorithm TRADES as our baseline. T
   - `sat-es`: initial epochs of our approach
   - `sat-alpha`: the momentum term $\alpha$ of our approach
 
-#### Evaluation script
-Evaluate robust WRN-34-10 models on CIFAR10 by PGD-20 attack:
+#### Robust evaluation script
+Evaluate robust WRN-34-10 models on CIFAR10 under PGD-20 attack:
 ```bash
   $ python pgd_attack.py --model-dir "/path/to/checkpoints"
 ```
-This command evaluate 71-st to 100-th checkpoints in the specified path.
+This command evaluates 71-st to 100-th checkpoints in the specified path.
 
 #### Results
 <p align="center">
@@ -71,6 +71,12 @@ This command evaluate 71-st to 100-th checkpoints in the specified path.
 <p align="center">
 Self-Adaptive Training mitigates the overfitting issue and consistently improves TRADES.
 </p>
+
+#### Attack TRADES+SAT
+We provide the checkpoint of our best performed model in [Google Drive](https://drive.google.com/file/d/1By8kbU-DvL_vAYHdHkDtganrU88n81TT/view?usp=sharing) and report its performance as below.
+|Attack|Submitted by   |Natural Accuracy (%)|Robust Accuracy (%)|
+|------|---------------|--------------------|-------------------|
+|PGD-20|(initial entry)|83.48               |58.03              |
 
 ## Reference
 For technical details, please check [the paper](https://arxiv.org/abs/2002.10319).
