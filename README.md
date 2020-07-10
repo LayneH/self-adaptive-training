@@ -73,10 +73,14 @@ Self-Adaptive Training mitigates the overfitting issue and consistently improves
 </p>
 
 #### Attack TRADES+SAT
-We provide the checkpoint of our best performed model in [Google Drive](https://drive.google.com/file/d/1By8kbU-DvL_vAYHdHkDtganrU88n81TT/view?usp=sharing) and report its performance as below.
-|Attack|Submitted by   |Natural Accuracy (%)|Robust Accuracy (%)|
-|------|---------------|--------------------|-------------------|
-|PGD-20|(initial entry)|83.48               |58.03              |
+We provide the checkpoint of our best performed model in [Google Drive](https://drive.google.com/file/d/1By8kbU-DvL_vAYHdHkDtganrU88n81TT/view?usp=sharing) and compare its natural and robust accuracy with [TRADES](https://github.com/yaodongyu/TRADES) as below.
+|Attack (submitted by) \ Method|TRADES|TRADES + SAT|
+|------------------------------|:----:|:----------:|
+|None (initial entry)          |84.92 |83.48       |
+|PGD-20 (initial entry)        |56.68 |58.03       |
+|[MultiTargeted-2000](https://arxiv.org/abs/1910.09338) (initial entry)|53.24 |53.46       |
+|[Auto-Attack+](https://github.com/fra31/auto-attack) (Francesco Croce)|53.08 |53.29       |
+
 
 ## Reference
 For technical details, please check [the paper](https://arxiv.org/abs/2002.10319).
