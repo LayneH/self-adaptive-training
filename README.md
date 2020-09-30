@@ -1,6 +1,8 @@
 # Self-Adaptive Training
 This is the PyTorch implementation of the paper [Self-Adaptive Training: beyond Empirical Risk Minimization](https://arxiv.org/abs/2002.10319).
 
+- News: Our work has been accepted at NeurIPS 2020. Please check the the link above for updated paper.
+
 ## Requirements
 
 - Python >= 3.6
