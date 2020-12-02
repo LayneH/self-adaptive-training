@@ -1,7 +1,9 @@
 # Self-Adaptive Training
-This is the PyTorch implementation of the paper [Self-Adaptive Training: beyond Empirical Risk Minimization](https://arxiv.org/abs/2002.10319).
+This is the PyTorch implementation of the NeurIPS'2020 paper [Self-Adaptive Training: beyond Empirical Risk Minimization](https://arxiv.org/abs/2002.10319).
 
-- News: Our work has been accepted at NeurIPS 2020. Please check the the link above for updated paper.
+Self-adaptive training significantly mitigates the overfitting and improves the generalization of deep neural networks. It also advances the state-of-the-art on learning with noisy label and adversarial training.
+
+- News: Our work has been accepted at NeurIPS'2020. Please check the the link above for updated paper.
 
 ## Requirements
 
@@ -22,25 +24,53 @@ The `main.py` contains training and evaluation functions in standard training se
   ```
   The argument `TRIAL_NAME` is optional, it helps us to identify different trials of the same experiments without modifying the training script. The evaluation is automatically performed when training is finished.
 
-- Additional arguments 
+- Additional arguments
   - `noise-rate`: the percentage of data that being corrupted
   - `noise-type`: type of random corruptions (i.e., corrupted_label, Gaussian,random_pixel, shuffled_pixel)
   - `sat-es`: initial epochs of our approach
   - `sat-alpha`: the momentum term $\alpha$ of our approach
+  - `arch`: the architecture of backbone model, e.g., resnet34/wrn34
 
 
 #### Results on CIFAR datasets under uniform label noise
-- CIFAR10
+- Test Accuracy(%) on CIFAR10
 
 |Noise Rate         |0.2    |0.4    |0.6    |0.8    |
 |-------------------|-------|-------|-------|-------|
-|Test Accuracy(%)   |94.14  | 92.64 |89.23  |78.58  |
+|ResNet-34          |94.14  | 92.64 |89.23  |78.58  |
+|WRN-28-10          |94.84  | 93.23 |89.42  |80.13  |
 
-- CIFA100
+
+- Test Accuracy(%) on CIFA100
 
 |Noise Rate         |0.2    |0.4    |0.6    |0.8    |
 |-------------------|-------|-------|-------|-------|
-|Test Accuracy(%)   |75.77  |71.38  |62.69  |38.72  |
+|ResNet-34          |75.77  |71.38  |62.69  |38.72  |
+|WRN-28-10          |77.71  | 72.60 |64.87  |44.17  |
+
+
+#### Runnable scripts for repreducing double-descent phenomenon
+You can use the command as below to train the default model (i.e., ResNet-18) on CIFAR10 dataset with 16.67% uniform label noise injected (i.e., 15% label *error* rate):
+  ```bash
+  $ bash scripts/cifar10/run_sat_dd_parallel.sh [TRIAL_NAME]
+  $ bash scripts/cifar10/run_ce_dd_parallel.sh [TRIAL_NAME]
+  ```
+
+
+#### Double-descent ERM vs. single-descent self-adaptive training
+<p align="center">
+    <img src="images/model_dd.png" width="450"\>
+</p>
+<p align="center">
+Double-descent ERM vs. single-descent self-adaptive training on the error-capacity curve. The vertical dashed line represents the interpolation threshold.
+</p>
+
+<p align="center">
+    <img src="images/epoch_dd.png" width="450"\>
+</p>
+<p align="center">
+Double-descent ERM vs. single-descent self-adaptive training on the epoch-capacity curve. The dashed vertical line represents the initial epoch E_s of our approach.
+</p>
 
 
 ### Adversarial training
@@ -86,11 +116,16 @@ We provide the checkpoint of our best performed model in [Google Drive](https://
 
 ## Reference
 For technical details, please check [the paper](https://arxiv.org/abs/2002.10319).
+
 ```
-@article{huang2020sat,
-        title = {Self-Adaptive Training: beyond Empirical Risk Minimizatio},
-        author = {Lang Huang and Chao Zhang and Hongyang Zhang},
-        journal = {arXiv preprint arXiv:2002.10319},
-        year = {2020}
+@inproceedings{huang2020self,
+  title={Self-Adaptive Training: beyond Empirical Risk Minimization},
+  author={Huang, Lang and Zhang, Chao and Zhang, Hongyang},
+  booktitle={Advances in Neural Information Processing Systems},
+  volume={33},
+  year={2020}
 }
 ```
+
+## Contact
+If you have any question about this code, feel free to open an issue or contact laynehuang@pku.edu.cn.
