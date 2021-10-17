@@ -1,12 +1,13 @@
 # Self-Adaptive Training
 This is the PyTorch implementation of the 
 - NeurIPS'2020 paper [Self-Adaptive Training: beyond Empirical Risk Minimization](https://arxiv.org/abs/2002.10319)，
-- the journal version [Self-Adaptive Training: Bridging the Supervised and Self-Supervised Learning](https://arxiv.org/abs/2101.08732).
+- Journal version [Self-Adaptive Training: Bridging the Supervised and Self-Supervised Learning](https://arxiv.org/abs/2101.08732).
 
 
 Self-adaptive training significantly improves the generalization of deep networks under noise and enhances the self-supervised representation learning. It also advances the state-of-the-art on *learning with noisy label*, *adversarial training* and the *linear evaluation* on the learned representation.
 
 ## News
+- 2021.10: The code of Selective Classification for SAT has been released [here](https://github.com/LayneH/SAT-selective-cls).
 - 2021.01: We have released the journal version of Self-Adaptive Training, which is a unified algorithm for both the supervised and self-supervised learning. Code for self-supervised learning will be available soon.
 - 2020.09: Our work has been accepted at NeurIPS'2020.
 
